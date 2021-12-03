@@ -1,3 +1,40 @@
+//CAROUSEL
+const
+	myCarousel = document.querySelector('.carousel-container'),
+	scroller = myCarousel.querySelector('.scroller'),
+	slides = scroller.querySelectorAll('.switch-block'),
+	navButtons = document.querySelectorAll('.nav-button');
+let 
+  slideIndex = 1;
+
+//nav config
+for(i=0; i < navButtons.length; i++){
+	navButtons[i].addEventListener('click', function (e) {
+		let target = this.getAttribute('data-target');
+		
+		function getKey (target){
+			for(i=0; i<slides.length; i++){
+				if(slides[i].getAttribute('id') == target){
+					return i + 1;
+				}
+			}
+		}
+		
+		showSlides(slideIndex = getKey(target));
+	})
+}
+
+//carousel config
+function showSlides(n) {
+  //prevent trying to reach a slide that does not exist
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+
+  //handle the actual carousel
+  scroller.style.transform = `translateX(-${(slideIndex - 1) * 100}%)`;
+}
+showSlides(slideIndex);
+
 //CLOCK
 const clock = document.querySelector('#clock')
 let times = {
@@ -35,3 +72,5 @@ function checkTime(i) {
   return i;
 }
 startClock()
+
+//ALARM

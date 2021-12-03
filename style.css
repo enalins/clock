@@ -154,7 +154,7 @@ nav {
   padding-bottom: 1rem;
   border-bottom: solid 2px #eaeaea;
 }
-  nav button {
+  .nav-button {
     background: linear-gradient(135deg, #2d143c, #000 100px);
     color: #fff;
     height: 42px;
@@ -162,11 +162,23 @@ nav {
     border: 0;
     padding: 0 0.8rem;
     cursor: pointer;
+    user-select: none;
   }
-
-.switch-block {
-  padding-top: 2rem;
+.carousel-container {
+  position: relative;
+  overflow: hidden;
 }
+  .scroller{
+    display: flex;
+    flex-flow: row nowrap;
+    transition: 0.28s ease;
+  }
+  .switch-block {
+    min-width: 100%;
+    transition: 0.28s ease;
+    overflow: hidden;
+    padding-top: 2rem;
+  }
   
 /* [ CLOCK ] */
 .clock {

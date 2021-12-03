@@ -16,20 +16,27 @@
 
     <main>
       <nav>
-        <button type="button">Clock</button>
-        <button type="button">Alarm</button>
-        <button type="button">Timer</button>
-        <button type="button">Pomodoro</button>
+        <button type="button" class="nav-button" data-target="clock">Clock</button>
+        <button type="button" class="nav-button" data-target="alarm">Alarm</button>
+        <button type="button" class="nav-button" data-target="timer">Timer</button>
+        <button type="button" class="nav-button" data-target="pomodoro">Pomodoro</button>
       </nav>
+      <div class="carousel-container">
+        <div class="scroller">
+          <div class="switch-block" id="clock">
+            <div class="clock">
+              <span class="clock__minutes"></span>
+              <span class="clock__hours"></span>
+              <span class="clock__seconds"></span>
+            </div>
+    
+            <div class="clock__time"></div>
+          </div>
 
-      <div class="switch-block" id="clock">
-        <div class="clock">
-          <span class="clock__minutes"></span>
-          <span class="clock__hours"></span>
-          <span class="clock__seconds"></span>
+          <div class="switch-block" id="alarm">
+            <div style="width: 100%; height: 100%; background: tomato;"></div>
+          </div>
         </div>
-
-        <div class="clock__time"></div>
       </div>
     </main>
 
