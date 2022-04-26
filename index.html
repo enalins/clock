@@ -17,8 +17,8 @@
     <main>
       <nav>
         <button type="button" class="nav-button" data-target="clock">Clock</button>
-        <button type="button" class="nav-button" data-target="alarm">Alarm</button>
         <button type="button" class="nav-button" data-target="timer">Timer</button>
+        <button type="button" class="nav-button" data-target="alarm">Alarm</button>
         <button type="button" class="nav-button" data-target="pomodoro">Pomodoro</button>
       </nav>
       <div class="carousel-container">
@@ -33,8 +33,30 @@
             <div class="clock__time"></div>
           </div>
 
+          <div class="switch-block" id="timer">
+            <div class="timer">
+
+              <div class="timer__clock">
+                <span class="timer__clock__hours">00</span>
+                <span class="timer__clock__minutes">00</span>
+                <span class="timer__clock__seconds">00</span>
+                <span class="timer__clock__milliseconds">00</span>
+              </div>
+
+              <nav>
+                <button type="button" class="nav-button" id="start-timer" style="background: darkmagenta" onclick="startTimer()">Start Timer</button>
+                <button type="button" class="nav-button" id="stop-timer" hidden="hidden" style="background: #333" onclick="stopTimer()">Stop Timer</button>
+                <button type="button" class="nav-button" id="continue-timer" hidden="hidden" style="background: darkmagenta" onclick="startTimer()">Continue Timer</button>
+                <button type="button" class="nav-button" id="reset-timer" hidden="hidden" style="background: #555" onclick="resetTimer()">Reset Timer</button>
+              </nav>
+            </div>
+          </div>
+
           <div class="switch-block" id="alarm">
             <div style="width: 100%; height: 100%; background: tomato;"></div>
+          </div>
+          <div class="switch-block" id="pomodoro">
+            <div style="width: 100%; height: 100%; background: yellow;"></div>
           </div>
         </div>
       </div>

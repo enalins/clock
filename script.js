@@ -44,10 +44,11 @@ let times = {
 }
 
 function startClock() {
-  let today = new Date();
-  let s = today.getSeconds();
-  let m = today.getMinutes();
-  let h = today.getHours();
+  let
+		today = new Date(),
+  	s = today.getSeconds(),
+  	m = today.getMinutes(),
+  	h = today.getHours();
 
 	// this block was made to prevent the clock ticks from returning counter clock wise when they get to de end of the circle
 	if(s == 0){ times.seconds += 360; }
@@ -73,4 +74,85 @@ function checkTime(i) {
 }
 startClock()
 
-//ALARM
+//TIMER
+const
+	timerHours = document.querySelector('.timer__clock__hours'),
+	timerMinutes = document.querySelector('.timer__clock__minutes'),
+	timerSeconds = document.querySelector('.timer__clock__seconds'),
+	timerMilliseconds = document.querySelector('.timer__clock__milliseconds'),
+	startButton = document.querySelector('#start-timer'),
+	continueButton = document.querySelector('#continue-timer'),
+	stopButton = document.querySelector('#stop-timer'),
+	resetButton = document.querySelector('#reset-timer');
+
+let 
+	timerKeep = false,
+	timerStorage = {
+		milliseconds: 0,
+		seconds: 0,
+		minutes: 0,
+		hours: 0
+	};
+
+var counter;
+
+function startTimer() {
+	timerKeep = true;
+	timerRecursion();
+	stopButton.removeAttribute('hidden');
+	startButton.setAttribute('hidden', 'hidden');
+	continueButton.setAttribute('hidden', 'hidden');
+
+	counter = setInterval(timerRecursion, 1);
+}
+function stopTimer() {
+	clearInterval(counter);
+	resetButton.removeAttribute('hidden');
+	continueButton.removeAttribute('hidden');
+	stopButton.setAttribute('hidden', 'hidden');
+}
+
+function resetTimer() {
+	timerStorage.milliseconds = 0;
+	timerStorage.seconds = 0;
+	timerStorage.minutes = 0;
+	timerStorage.hours = 0;
+	startButton.removeAttribute('hidden');
+	stopButton.setAttribute('hidden', 'hidden');
+	resetButton.setAttribute('hidden', 'hidden');
+	continueButton.setAttribute('hidden', 'hidden');
+
+	displayTimer()
+}
+
+function timerRecursion() {
+	timerStorage.milliseconds += 1;
+
+	if(timerStorage.milliseconds > 99){
+		timerStorage.milliseconds = 1;
+		timerStorage.seconds += 1 
+	}
+
+	if(timerStorage.seconds > 59){
+		timerStorage.seconds = 1;
+		timerStorage.minutes += 1
+	}
+
+	if(timerStorage.minutes > 59){
+		timerStorage.minutes = 1;
+		timerStorage.hours += 1
+	}
+
+	if(timerStorage.hours > 99){
+		stopTimer()
+	}
+
+	displayTimer()
+}
+
+function displayTimer() {
+	timerMilliseconds.innerHTML = checkTime(timerStorage.milliseconds);
+	timerSeconds.innerHTML = checkTime(timerStorage.seconds);
+	timerMinutes.innerHTML = checkTime(timerStorage.minutes);
+	timerHours.innerHTML = checkTime(timerStorage.hours);
+}
